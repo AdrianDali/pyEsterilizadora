@@ -23,7 +23,7 @@ class MasterPanel:
 
     def pre_calentamiento(self):
         self.ventana.destroy()
-        PreCalentamiento
+        PreCalentamiento()
 
     def __init__(self):
         self.ventana = tk.Tk()
