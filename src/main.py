@@ -5,6 +5,6 @@ from interface.form_vacuum_phase import VacuumPhase
 from interface.form_recetas import RecetasMenu
 if __name__ == '__main__':
     #PreCalentamiento()
-    VacuumPhase()
+    #VacuumPhase()
     #App()
-    #RecetasMenu()
+    RecetasMenu()
