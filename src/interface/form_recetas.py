@@ -2,8 +2,15 @@ import tkinter as tk
 from tkinter.font import BOLD 
 import utils.generic as utl 
 import components.components as cmp
+import time
 
 class RecetasMenu:
+
+    def times(self): 
+        current_time = time.strftime("%H:%M:%S")
+        self.clock.config(text = current_time)
+        self.date.config(text = time.strftime("%d/%m/%Y"))
+        self.clock.after(200, self.times)
 
     def __init__(self):
         
@@ -12,14 +19,31 @@ class RecetasMenu:
         #el ancho y alto de la ventana
         w,h = self.ventana.winfo_screenwidth(), self.ventana.winfo_screenheight()
         #formateo de tuplas
-        self.ventana.geometry("%dx%d+0+0" % (w, h))
-        self.ventana.config(bg= "#fcfcfc")
+        self.ventana.geometry("%dx%d+0+0" % (1200, 800))
+        self.ventana.config(bg= "#fc4cfc")
         self.ventana.resizable(width = 0, height= 0)
         
         #header
-        frame_top = tk.Frame(self.ventana, bd= 0 ,height=70, relief= tk.SOLID, bg = "#6a9ff6")
-        frame_top.pack(side= "top" , fill = tk.X)
-        #cmp.header(self.ventana)
+        #------------------------------------------------------
+        frame_form_top = tk.Frame(self.ventana,height=50, bd = 0,padx= 10, relief=tk.SOLID, bg = "#ffffff")
+        frame_form_top.pack (side = "top", fill= tk.X)
+        title = tk.Label(frame_form_top, text = "Sterilization System", font = ('Times', 30 ), bg = "#ffffff", fg = "#000000", pady = 0)
+        title.pack(side = "left")
+
+        self.date =tk.Label(frame_form_top, font=('Times',15,BOLD)  ,bg = "#fcfcfc", fg = "#666a88", padx = 25)
+        self.date.pack(side = "right")
+
+        self.clock = tk.Label(frame_form_top, font = ('Times', 15, BOLD ), bg = "#6a9ff6", fg = "black", padx = 25, pady=20)
+        self.clock.pack(side = "right" )
+        self.times()
+
+        text_temperatura = tk.Label(frame_form_top, text = "Temperatura: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text_temperatura.pack(side = "left", padx=80)
+
+        temperatura = tk.Label(frame_form_top, text = "20°C", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000", padx= 0 )
+        temperatura.pack(side = "left")
+        #TERMINA HEADER
+        #----------------------------------------------------------------------------------------------------------------------
 
         #FRAME PARA LISTA Y BOTONES DE RECETAS
         frame_left = tk.Frame(self.ventana, bd = 0 , relief= tk.SOLID, width= 40,padx=10, pady=10, bg = "#3a7ff6")
@@ -37,9 +61,69 @@ class RecetasMenu:
         boton_eliminar = tk.Button(frame_left, text = "Eliminar", font = ('Times', 15, BOLD ), bg = "red", bd = 0, fg = "#fff")
         boton_eliminar.pack(side = "top", expand = tk.NO, fill = tk.X)
 
-        frame_right = tk.Frame(self.ventana, bd= 0 , relief= tk.SOLID, bg = "#3a2ff6")
-        frame_right.pack(side = "right", expand = tk.YES, fill = tk.BOTH)
+        scrollbar = tk.Scrollbar(self.ventana , orient = tk.VERTICAL)
+        scrollbar.pack( side = "right", fill = tk.Y )
+
+        frame_r = tk.Canvas(self.ventana, bd = 0 , relief= tk.SOLID, bg = "#fc1c1c", yscrollcommand=scrollbar.set)
+        frame_r.pack(side = "right", expand = tk.YES, fill = tk.BOTH)
+
+  
+        frame_right = tk.Frame(frame_r, bd= 0 , relief= tk.SOLID, bg = "#3a2ff6")
+        frame_right.pack(side = "top", expand = tk.YES, fill = tk.BOTH, pady=10, padx=10)
+
+        scrollbar.config( command = frame_r.yview )
         
-        scrollbar = tk.Scrollbar(frame_right , orient = tk.VERTICAL)
-        scrollbar.pack(side = "right", fill = tk.Y)
+       
+        
+        #----------------------------------------------------------------------------------------------------------------------
+        frame_right.columnconfigure(0, weight=1)
+        frame_right.rowconfigure(200, weight=15)
+        text11 = tk.Label(frame_right, text = "VACUUM", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text11.grid(row = 0, column = 1, sticky = tk.W)
+        text1 = tk.Label(frame_right, text = "Evacuation Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text1.grid(row = 1, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text2 = tk.Label(frame_right, text = "Anti-cavitation Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text2.grid(row = 2, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text3 = tk.Label(frame_right, text = "Gas Interlock Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text3.grid(row = 3, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text4 = tk.Label(frame_right, text = "Pressure Increment: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text4.grid(row = 4, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text5 = tk.Label(frame_right, text = "Time Increment: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text5.grid(row = 5, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text6 = tk.Label(frame_right, text = "Fast Increment Tolerance: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text6.grid(row = 6 , column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text7 = tk.Label(frame_right, text = "Slow Increment Termination Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text7.grid(row = 7, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text8 = tk.Label(frame_right, text = "Print Interval: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text8.grid(row = 8, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text9 = tk.Label(frame_right, text = "LEAK TEST ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text9.grid(row = 9, column = 1, sticky = tk.W, pady = 5 ,padx=10)
+        text10 = tk.Label(frame_right, text = "Leak Test Time", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text10.grid(row = 10, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text111 = tk.Label(frame_right, text = "Leak Test Tolerance", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text111.grid(row = 11, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text12 = tk.Label(frame_right, text = "Print Interva", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text12.grid(row = 12, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text13 = tk.Label(frame_right, text = "Inert Dilution", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000") 
+        text13.grid(row = 13, column = 0, pady = 5 ,padx=10)
+        text14 = tk.Label(frame_right, text = "# Of Dilution Cycles", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text14.grid(row = 14, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text15 = tk.Label(frame_right, text = "Inert Gas Pressure", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text15.grid(row = 15, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text16 = tk.Label(frame_right, text = "Inert Pressure Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text16.grid(row = 16, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text17 = tk.Label(frame_right, text = "Inert Time Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text17.grid(row = 17, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text18 = tk.Label(frame_right, text = "Inert Fast Increment Tolerance", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text18.grid(row = 18, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text19 = tk.Label(frame_right, text = "Evacuation Pressure", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text19.grid(row = 19, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text20 = tk.Label(frame_right, text = "Vacuum Pressure Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text20.grid(row = 20, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        text21 = tk.Label(frame_right, text = "Vacuum Time Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text21.grid(row = 21, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+
+        self.ventana.mainloop()
+
+
 
