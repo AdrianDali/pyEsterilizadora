@@ -7,11 +7,37 @@ import time
 
 class RecetasMenu:
 
+
+    def LabelsUnits(self, nombres, inicio):
+        j = inicio 
+        for i in range(len(nombres)):
+            tk.Label(self.second_frame, text = nombres[i], font = ('Times', 15, BOLD ), bg = "#ffffff",
+             fg = "#000000").grid(row = int(j), column = 2, sticky = tk.E)
+            j =  j + 1
+            print(j)
+        
+
+    def Labels(self,nombres,inicio,numeracion):
+        j = inicio 
+        n = numeracion
+      
+        for i in range(len(nombres)):
+            print("entro ")
+            tk.Label(self.second_frame, text = str(n), font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000").grid(row = int(j),
+             column = 0, sticky = tk.W)
+            tk.Label(self.second_frame, text = nombres[i], font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000").grid(row = int(j),
+            column = 1, sticky = tk.W, pady = 5 ,padx=10)
+            j =  j + 1
+            n = n + 1
+            print(j)
+            
+
     def times(self): 
         current_time = time.strftime("%H:%M:%S")
         self.clock.config(text = current_time)
         self.date.config(text = time.strftime("%d/%m/%Y"))
         self.clock.after(200, self.times)
+
 
     def __init__(self):
         root = Tk() 
@@ -26,10 +52,10 @@ class RecetasMenu:
         title = tk.Label(frame_form_top, text = "Sterilization System", font = ('Times', 30 ), bg = "#ffffff", fg = "#000000", pady = 0)
         title.pack(side = "left")
 
-        self.date =tk.Label(frame_form_top, font=('Times',15,BOLD)  ,bg = "#fcfcfc", fg = "#666a88", padx = 25)
+        self.date =tk.Label(frame_form_top, font=('Times',15,BOLD)  ,bg = "#ffffff", fg = "#666a88", padx = 25)
         self.date.pack(side = "right")
 
-        self.clock = tk.Label(frame_form_top, font = ('Times', 15, BOLD ), bg = "#6a9ff6", fg = "black", padx = 25, pady=20)
+        self.clock = tk.Label(frame_form_top, font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "black", padx = 25, pady=20)
         self.clock.pack(side = "right" )
         self.times()
 
@@ -43,7 +69,7 @@ class RecetasMenu:
         #----------------------------------------------------------------------------------------------------------------------
 
         #FRAME PARA LISTA Y BOTONES DE RECETAS
-        frame_left = tk.Frame(root, bd = 0 , relief= tk.SOLID, width= 40,padx=10, pady=10, bg = "#3a7ff6")
+        frame_left = tk.Frame(root, bd = 0 , relief= tk.SOLID, width= 40,padx=10, pady=10, bg = "#ffffff")
         frame_left.pack(side = "left", expand = tk.NO, fill = tk.BOTH)
         lista = tk.Listbox(frame_left, height= 10,bd = 0, relief = tk.SOLID, bg = "#fcfcfc", fg = "#666a88", font = ('Times', 15, BOLD ))
         lista.pack(side = "top", expand = tk.NO, fill = tk.X)
@@ -62,80 +88,132 @@ class RecetasMenu:
         
         
         #main frame
-        main_frame = Frame(root,bg="red")
+        main_frame = Frame(root,bg="#ffffff")
         main_frame.pack( fill=BOTH, expand=True, padx=10, pady=10)
         #canvas
-        canvas = Canvas(main_frame,bg = "yellow")
+        canvas = Canvas(main_frame,bg = "#ffffff")
         canvas.pack(side = LEFT ,fill=BOTH, expand=True, padx=10, pady=10)
        
 
         #scroll bar to canvas 
-        scroll_bar = Scrollbar(main_frame, orient=VERTICAL, command=canvas.yview, bg="green")
+        scroll_bar = Scrollbar(main_frame, orient=VERTICAL, command=canvas.yview, bg="#ffffff")
         scroll_bar.pack(side=RIGHT, fill=Y)
         #configure the canvas 
         canvas.configure(yscrollcommand=scroll_bar.set)
 
         canvas.bind('<Configure>', lambda e:canvas.configure( scrollregion = canvas.bbox('all')))
         #create another frame inside the canvas 
-        second_frame = Frame(canvas, bg="blue")
-        second_frame.pack(fill=BOTH, expand=True, padx=10, pady=10)
+        self.second_frame = Frame(canvas, bg="#ffffff")
+        self.second_frame.pack(fill=BOTH, expand=True, padx=10, pady=10)
 
         # add thet new frame to a window in the canvas
-        canvas.create_window((0,0), window=second_frame, anchor='nw')
+        canvas.create_window((0,0), window=self.second_frame, anchor='nw')
 
         #for thing in range(100):
-        #    Button(second_frame, text=thing, width=10).grid(row=thing, column=0)
+        #    Button(self.second_frame, text=thing, width=10).grid(row=thing, column=0)
 
-        #labe = Label(second_frame, text="Pre Calentamiento", font=('Times', 30 ), bg = "#ffffff", fg = "#000000")
+        #labe = Label(self.second_frame, text="Pre Calentamiento", font=('Times', 30 ), bg = "#ffffff", fg = "#000000")
         #labe.grid(row=3, column=2)
-        #labe2 = Label(second_frame, text="Pre Calentamiento", font=('Times', 30 ), bg = "#ffffff", fg = "#000000")
+        #labe2 = Label(self.second_frame, text="Pre Calentamiento", font=('Times', 30 ), bg = "#ffffff", fg = "#000000")
         #labe2.grid(row=3, column=3)
-        second_frame.columnconfigure(0, weight=1)
-        second_frame.rowconfigure(200, weight=15)
-        text11 = tk.Label(second_frame, text = "VACUUM", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text11.grid(row = 0, column = 1, sticky = tk.W)
-        text1 = tk.Label(second_frame, text = "Evacuation Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text1.grid(row = 1, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text2 = tk.Label(second_frame, text = "Anti-cavitation Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text2.grid(row = 2, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text3 = tk.Label(second_frame, text = "Gas Interlock Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text3.grid(row = 3, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text4 = tk.Label(second_frame, text = "Pressure Increment: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text4.grid(row = 4, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text5 = tk.Label(second_frame, text = "Time Increment: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text5.grid(row = 5, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text6 = tk.Label(second_frame, text = "Fast Increment Tolerance: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text6.grid(row = 6 , column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text7 = tk.Label(second_frame, text = "Slow Increment Termination Pressure: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text7.grid(row = 7, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text8 = tk.Label(second_frame, text = "Print Interval: ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text8.grid(row = 8, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text9 = tk.Label(second_frame, text = "LEAK TEST ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text9.grid(row = 9, column = 1, sticky = tk.W, pady = 5 ,padx=10)
-        text10 = tk.Label(second_frame, text = "Leak Test Time", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text10.grid(row = 10, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text111 = tk.Label(second_frame, text = "Leak Test Tolerance", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text111.grid(row = 11, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text12 = tk.Label(second_frame, text = "Print Interva", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text12.grid(row = 12, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text13 = tk.Label(second_frame, text = "Inert Dilution", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000") 
-        text13.grid(row = 13, column = 0, pady = 5 ,padx=10)
-        text14 = tk.Label(second_frame, text = "# Of Dilution Cycles", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text14.grid(row = 14, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text15 = tk.Label(second_frame, text = "Inert Gas Pressure", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text15.grid(row = 15, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text16 = tk.Label(second_frame, text = "Inert Pressure Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text16.grid(row = 16, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text17 = tk.Label(second_frame, text = "Inert Time Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text17.grid(row = 17, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text18 = tk.Label(second_frame, text = "Inert Fast Increment Tolerance", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text18.grid(row = 18, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text19 = tk.Label(second_frame, text = "Evacuation Pressure", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text19.grid(row = 19, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text20 = tk.Label(second_frame, text = "Vacuum Pressure Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text20.grid(row = 20, column = 0, sticky = tk.W, pady = 5 ,padx=10)
-        text21 = tk.Label(second_frame, text = "Vacuum Time Increment", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text21.grid(row = 21, column = 0, sticky = tk.W, pady = 5 ,padx=10)
+        self.second_frame.columnconfigure(0, weight=1)
+        self.second_frame.rowconfigure(200, weight=15)
+        
+        text11 = tk.Label(self.second_frame, text = "VACUUM", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text11.grid(row = 0, column = 2, sticky = tk.W)
+        #text12 = tk.Label(self.second_frame, text = "1", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        #text12.grid(row = 1, column = 0, sticky = tk.W)
+        self.Labels(["Evacuation Pressure: ","Anti-cavitation Pressure: ","Gas Interlock Pressure: ","Pressure Increment: ",
+        "Time Increment: ","Fast Increment Tolerance: ","Slow Increment Termination Pressure: ","Print Interval: "], 1,16)
+        text13 = tk.Label(self.second_frame, text = "110", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text13.grid(row = 1, column = 2)
+        #text12 = tk.Label(self.second_frame, text = "F", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        #text12.grid(row = 1, column = 2, sticky = tk.E)
+        self.LabelsUnits(["INHGA","INHGA","INHGA","INHG","MM:SS","INHG","INHGA","MM:SS"],1)
+
+        text9 = tk.Label(self.second_frame, text = "LEAK TEST ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text9.grid(row = 9, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+
+
+        self.Labels(["Leak Test Time", "Leak Test Tolerance", "Print Interval"], 10,25)
+        self.LabelsUnits(["HH:MM","INHG","MM:SS"],10)
+
+        text13 = tk.Label(self.second_frame, text = "INERT DILUTION", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000") 
+        text13.grid(row = 13, column = 2, pady = 5 ,padx=10)
+
+
+        self.Labels(["# Of Dilution Cycles", "Inert Gas Pressure", "Inert Pressure Increment", "Inert Time Increment", "Inert Fast Increment Tolerance",
+         "Evacuation Pressure", "Vacuum Pressure Increment", "Vacuum Time Increment", "Vacuum Fast Inc Tolerance", "Vacuum Slow Inc Termination Pressure",
+          "Anti-cavitation pressure", "Hi Pressure", "Print Interval"],14,29)
+        self.LabelsUnits(["","INHGA","INHG","MM:SS","INHG","INHGA","INHG","MM:SS","INHG","INHGA","INHGA","INHGA","MM:SS"],14)
+
+        text9 = tk.Label(self.second_frame, text = "HUMIDIFICATION ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text9.grid(row = 27, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+      
+        self.Labels(["Type", "Pressure Rise", "Pressure Increment", "Time Increment", "Fast Increment Tolerance",
+         "Maximum Time", "Print Interval"],  28,47)
+        self.LabelsUnits(["","INHG","INHG","MM:SS","INHG","HH:MM","MM:SS"],28)
+
+
+        text27 = tk.Label(self.second_frame, text = "HUMIDITY DWELL ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text27.grid(row = 35, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+
+        self.Labels(["Type","Control Pressure", "Control Differential", "Hi Humidity","Lo Humidity", "Maximum Humidity", "Dwell Time", "Print Interval"],36,71)
+        self.LabelsUnits(["","INHGA","INHG","INHGA","INHGA","INHGA","HH:MM","MM:SS"],36)
+
+        text36 = tk.Label(self.second_frame, text = "GAS", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text36.grid(row = 44, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+       
+        self.Labels(["Gas Pressure","Pressure Increment","Time Increment","Fast Increment Tolerance","Print Interval","Gas by Weight"],45,87)
+        self.LabelsUnits(["INHGA","INHG","MM:SS","INHG","MM:SS","LBS"],45)
+
+        text43 = tk.Label(self.second_frame, text = "GAS DWELL", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text43.grid(row = 51, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+        
+
+        self.Labels(["Control Pressure", "Control Differential", "Dwell Time", "Maximum # Makeups", "Long Exposure", "Short Exposure",
+         "Hi Pressure", "Lo Pressure", "Hi Pressure Abort", "Emission Control Lead Time", "Print Interval"], 52,94)
+        self.LabelsUnits(["INHGA","INHG","HH:MM","","HH:MM","HH:MM","INHGA","INHGA","INHGA","HH:MM","MM:SS"],52)
+
+        text55 = tk.Label(self.second_frame, text = "AFTER VACUUM", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text55.grid(row = 63, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+
+
+        self.Labels(["Evacuation Pressure", "Anti-cavitation Pressure", "Air Interlock Pressure", "Pressure Increment", "Time Increment",
+         "Fast Increment Tolerance", "Slow Increment Termination Pressure", "Vacumm Hold Time", "Print Interval"],64,107)
+
+        self.LabelsUnits(["INHGA","INHGA","INHGA","INHG","MM:SS","INHG","INHGA","HH:MM","MM:SS"],64)
+
+
+        text65 = tk.Label(self.second_frame, text = "GAS WASH A ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text65.grid(row = 74, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+
+        self.Labels(["#Of Wash Cycles", "Release Type", "Release Pressure","Evacuation Pressure", "Anti-cavitation Pressure", "Hi pressure",
+        "Release Pressure Increment", "Release Time Increment", "Release Fast Inc Tolerance", "Release Slow Increment Termination Pressure","Release Hold Time", 
+        "Vacuum Pressure Increment", "Vacuum Time Increment", "Vacuum Fast Inc Tolerance", "Vacuum Slow Increment Termination Pressure", "Vacuum Hold Time", "Print Interval"
+        ], 75,117)
+        
+        self.LabelsUnits(["","","INHGA","INHGA","INHGA","INHGA","INHG","MM:SS", "INHG", "INHGA","HH:MM","INHG","MM:SS","INHG","INHGA","HH:MM","MM:SS"],75)
+
+
+        text66 = tk.Label(self.second_frame, text = "GAS WASH B ", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text66.grid(row = 93, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+        self.Labels(["#Of Wash Cycles", "Release Type", "Release Pressure","Evacuation Pressure", "Anti-cavitation Pressure", "Hi pressure",
+        "Release Pressure Increment", "Release Time Increment", "Release Fast Inc Tolerance", "Release Slow Increment Termination Pressure","Release Hold Time", 
+        "Vacuum Pressure Increment", "Vacuum Time Increment", "Vacuum Fast Inc Tolerance", "Vacuum Slow Increment Termination Pressure", "Vacuum Hold Time", "Print Interval"
+        ], 94,134)
+
+        self.LabelsUnits(["","","INHGA","INHGA","INHGA","INHGA","INHG","MM:SS", "INHG", "INHGA","HH:MM","INHG","MM:SS","INHG","INHGA","HH:MM","MM:SS"],94)
+
+
+        text67 = tk.Label(self.second_frame, text = "RELEASE", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        text67.grid(row = 111, column = 2, sticky = tk.W, pady = 5 ,padx=10)
+
+        self.Labels(["Relsease Pressure", "Pressure Increment", "Time Increment", "Fast Increment Tolerance",
+        "Slow Increment Termination Pressure", "Print Interval"],112,169)
+
+        self.LabelsUnits(["INHGA","INHG","MM:SS","INHG","INHGA","MM:SS"],112)
+
 
         root.mainloop()
        
