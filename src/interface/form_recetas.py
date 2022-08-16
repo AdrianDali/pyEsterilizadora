@@ -7,6 +7,15 @@ import time
 
 class RecetasMenu:
 
+    #def LabelValues(self):
+    #    j = inicio 
+    #    for i in range(len(nombres)):
+    #        tk.Label(self.second_frame, text = nombres[i], font = ('Times', 15, BOLD ), bg = "#ffffff",
+    #         fg = "#000000").grid(row = int(j), column = 2, sticky = tk.E)
+    #        j =  j + 1
+    #        print(j)
+
+    
 
     def LabelsUnits(self, nombres, inicio):
         j = inicio 
@@ -125,8 +134,15 @@ class RecetasMenu:
         #text12.grid(row = 1, column = 0, sticky = tk.W)
         self.Labels(["Evacuation Pressure: ","Anti-cavitation Pressure: ","Gas Interlock Pressure: ","Pressure Increment: ",
         "Time Increment: ","Fast Increment Tolerance: ","Slow Increment Termination Pressure: ","Print Interval: "], 1,16)
-        text13 = tk.Label(self.second_frame, text = "110", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
-        text13.grid(row = 1, column = 2)
+       
+       
+        parametros01 = tk.Label(self.second_frame, text = "110", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
+        parametros01.grid(row = 1, column = 2)
+
+        
+
+
+
         #text12 = tk.Label(self.second_frame, text = "F", font = ('Times', 15, BOLD ), bg = "#ffffff", fg = "#000000")
         #text12.grid(row = 1, column = 2, sticky = tk.E)
         self.LabelsUnits(["INHGA","INHGA","INHGA","INHG","MM:SS","INHG","INHGA","MM:SS"],1)
