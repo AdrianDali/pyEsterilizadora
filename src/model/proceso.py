@@ -5,7 +5,21 @@ class DBProceso():
         self.connection = DataBase().connection
         self.cursor = self.connection.cursor()
     
-    def select_proceso(self ):
+    def select_all_name_proceso(self):
+        try:
+            sql = "SELECT nombre FROM esterilizadora.parametros order by id"
+            self.cursor.execute(sql)
+            result = self.cursor.fetchall()
+            list = []
+            for name in result:
+                list.append(name[0]) 
+            return list
+        except Exception as e:
+            print("Error: {}".format(e))
+            print(e)
+            raise
+
+    def select_proceso(self, value):
         sql= """SELECT 
     v_evacuation_pressure,
     v_anticavitation_pressure,
@@ -112,7 +126,7 @@ class DBProceso():
     r_fast_increment_tolerance,
     r_slow_increment_termination_pressure,
     r_print_interval
-    FROM esterilizadora.parametros where nombre = 'Receta01' """
+    FROM esterilizadora.parametros where nombre = '{}' """.format(value)
         object_proceso = []
         try:
             self.cursor.execute(sql)
@@ -128,7 +142,10 @@ class DBProceso():
             proceso[54],proceso[55],proceso[56],proceso[57],proceso[58],proceso[59],proceso[60],
             proceso[61],proceso[62],proceso[63],proceso[64],proceso[65],proceso[66],proceso[67],
             proceso[68],proceso[69],proceso[70],proceso[71],proceso[72],proceso[73],proceso[74],
-            proceso[75],proceso[76],proceso[77],proceso[78]]
+            proceso[75],proceso[76],proceso[77],proceso[78], proceso[79],proceso[80],proceso[81],
+            proceso[82],proceso[83],proceso[84],proceso[85],proceso[86],proceso[87],proceso[88],
+            proceso[89],proceso[90],proceso[91],proceso[92],proceso[93],proceso[94],proceso[95],
+            proceso[96],proceso[97],proceso[98],proceso[99],proceso[100],proceso[101],proceso[102],proceso[103], proceso[104]]
             
             print("Proceso: ",proceso[10])
 
