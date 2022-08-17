@@ -1,4 +1,4 @@
-from DBmysql import DataBase 
+from model.DBmysql import DataBase 
 
 class DBProceso():
     def __init__(self):
@@ -6,15 +6,7 @@ class DBProceso():
         self.cursor = self.connection.cursor()
     
     def select_proceso(self ):
-        sql= """SELECT id, nombre,
-        sterilant_selection,
-        temperature_setpoint,
-    jacket_differential_offset,
-    maximum_temperature,
-    hi_temperature_tolerance,
-    lo_temperature_tolerance,
-    cycles_start_temperature_tolerance,
-    pressure_units,
+        sql= """SELECT 
     v_evacuation_pressure,
     v_anticavitation_pressure,
     v_gas_interlock_pressure,
@@ -136,12 +128,7 @@ class DBProceso():
             proceso[54],proceso[55],proceso[56],proceso[57],proceso[58],proceso[59],proceso[60],
             proceso[61],proceso[62],proceso[63],proceso[64],proceso[65],proceso[66],proceso[67],
             proceso[68],proceso[69],proceso[70],proceso[71],proceso[72],proceso[73],proceso[74],
-            proceso[75],proceso[76],proceso[77],proceso[78],proceso[79],proceso[80],proceso[81],
-            proceso[82],proceso[83],proceso[84],proceso[85],proceso[86],proceso[87],proceso[88],
-            proceso[89],proceso[90],proceso[91],proceso[92],proceso[93],proceso[94],proceso[95],
-            proceso[96],proceso[97],proceso[98],proceso[99],proceso[100],proceso[101],proceso[102],
-            proceso[103],proceso[104],proceso[105],proceso[106],proceso[107],proceso[108],proceso[109]
-            ,proceso[110],proceso[111],proceso[112],proceso[113],proceso[114]]
+            proceso[75],proceso[76],proceso[77],proceso[78]]
             
             print("Proceso: ",proceso[10])
 
