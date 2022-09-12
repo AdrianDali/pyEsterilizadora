@@ -3,9 +3,9 @@ from tkinter.font import BOLD
 
 from matplotlib.pyplot import margins 
 import utils.generic as utl 
-from interface.form_recetas import RecetasMenu
+#from interface.form_recetas import *
 from interface.form_pre_calentamiento import PreCalentamiento
-import components.components as cmp 
+#import components.components as cmp 
 import time
 class MasterPanel:
 
@@ -19,7 +19,7 @@ class MasterPanel:
 
     def recetas(self):
         self.ventana.destroy()
-        RecetasMenu()
+        #RecetasMenu()
 
     def pre_calentamiento(self):
         self.ventana.destroy()

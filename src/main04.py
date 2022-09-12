@@ -1,20 +1,9 @@
-from interface.form_recetas import RecetasMenu
-from interface.form_login import App
-from interface.form_pre_calentamiento import PreCalentamiento
-from interface.form_vacuum_phase import VacuumPhase
-from interface.form_master import MasterPanel
-#from model.DBmysql import Database
-#if __name__ == '__main__':
-    #PreCalentamiento()
-    #VacuumPhase()
-    #App()
-    #RecetasMenu()
-    #MasterPanel()
-#------------------------------------
 import tkinter as tk                # python 3
 from tkinter import font  as tkfont # python 3
 #import Tkinter as tk     # python 2
 #import tkFont as tkfont  # python 2
+from interface.form_master import MasterPanel
+from interface.form_recetas import RecetasMenu
 
 class SampleApp(tk.Tk):
 
@@ -32,8 +21,8 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        
-        for F in (RecetasMenu,MasterPanel, PageOne, PageTwo):
+
+        for F in (RecetasMenu,StartPage, PageOne, PageTwo):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame

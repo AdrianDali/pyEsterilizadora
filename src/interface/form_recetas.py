@@ -2,23 +2,566 @@ from distutils.cmd import Command
 import tkinter as tk
 from tkinter import *
 from tkinter.font import BOLD
+from interface.form_master import MasterPanel
 import utils.generic as utl
 import components.components as cmp
 import time
 from model.proceso import DBProceso
+from tkinter.simpledialog import askfloat, askinteger, askstring
 
 
-class RecetasMenu:
+class RecetasMenu(tk.Frame):
+
+    def regreso(self):
+        self.root.destroy()
+        MasterPanel()
 
     def getElement(self, event):
+        
         selection = event.widget.curselection()
+        print("selecion",selection[0])
+        
         index = selection[0]
         self.value = event.widget.get(index)
         # result.set(value)
         print(index, ' -> ', self.value)
-        self.labels_entry()
-        
+        self.labels_entry_proceso()
+
     def labels_entry(self):
+        print("VAKUES")
+        print(self.value)
+        print()
+
+        ren = self.con.select_proceso(self.value)
+       
+        # print(DBProceso.select_proceso)
+
+        self.valor16 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor16.insert(0, 0)
+        self.valor16.grid(row=1, column=2, padx=100)
+
+        self.valor17 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor17.insert(0, 0)
+        self.valor17.grid(row=2, column=2, padx=100)
+
+        self.valor18 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor18.insert(0, 0)
+        self.valor18.grid(row=3, column=2, padx=100)
+
+        self.valor19 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor19.insert(0, 0)
+        self.valor19.grid(row=4, column=2, padx=100)
+
+        self.valor20 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor20.insert(0, 0)
+        self.valor20.grid(row=5, column=2, padx=100)
+
+        self.valor21 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor21.insert(0, 0)
+        self.valor21.grid(row=6, column=2, padx=100)
+
+        self.valor22 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor22.insert(0, 0)
+        self.valor22.grid(row=7, column=2, padx=100)
+
+        self.valor23 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor23.insert(0, 0)
+        self.valor23.grid(row=8, column=2, padx=100)
+
+        self.valor25 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor25.insert(0, 0)
+        self.valor25.grid(row=10, column=2, padx=100)
+
+        self.valor26 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor26.insert(0, 0)
+        self.valor26.grid(row=11, column=2, padx=100)
+
+        self.valor27 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor27.insert(0, 0)
+        self.valor27.grid(row=12, column=2, padx=100)
+
+        self.valor29 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor29.insert(0, 0)
+        self.valor29.grid(row=14, column=2, padx=100)
+
+        self.valor30 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor30.insert(0, 0)
+        self.valor30.grid(row=15, column=2, padx=100)
+
+        self.valor31 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor31.insert(0, 0)
+        self.valor31.grid(row=16, column=2, padx=100)
+
+        self.valor32 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor32.insert(0, 0)
+        self.valor32.grid(row=17, column=2, padx=100)
+
+        self.valor33 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor33.insert(0, 0)
+        self.valor33.grid(row=18, column=2, padx=100)
+
+        self.valor34 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor34.insert(0, 0)
+        self.valor34.grid(row=19, column=2, padx=100)
+
+        self.valor35 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor35.insert(0, 0)
+        self.valor35.grid(row=20, column=2, padx=100)
+
+        self.valor36 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor36.insert(0, 0)
+        self.valor36.grid(row=21, column=2, padx=100)
+
+        self.valor37 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor37.insert(0, 0)
+        self.valor37.grid(row=22, column=2, padx=100)
+
+        self.valor38 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor38.insert(0, 0)
+        self.valor38.grid(row=23, column=2, padx=100)
+
+        self.valor39 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor39.insert(0, 0)
+        self.valor39.grid(row=24, column=2, padx=100)
+
+        self.valor40 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor40.insert(0, '0')
+        self.valor40.grid(row=25, column=2, padx=100)
+
+        self.valor41 = tk.Entry(
+            self.second_frame, width=20, bg="#ff8fff", fg="#000000")
+        self.valor41.insert(0, 0)
+        self.valor41.grid(row=26, column=2, padx=100)
+
+        self.valor47 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor47.insert(0, 0)
+        self.valor47.grid(row=28, column=2, padx=100)
+
+        self.valor48 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor48.insert(0, 0)
+        self.valor48.grid(row=29, column=2, padx=100)
+
+        self.valor49 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor49.insert(0, 0)
+        self.valor49.grid(row=30, column=2, padx=100)
+
+        self.valor50 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor50.insert(0, 0)
+        self.valor50.grid(row=31, column=2, padx=100)
+
+        self.valor51 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor51.insert(0, 0)
+        self.valor51.grid(row=32, column=2, padx=100)
+
+        self.valor52 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor52.insert(0, 0)
+        self.valor52.grid(row=33, column=2, padx=100)
+
+        self.valor53 = tk.Entry(
+            self.second_frame, width=20, bg="#3fffff", fg="#000000")
+        self.valor53.insert(0, 0)
+        self.valor53.grid(row=34, column=2, padx=100)
+
+        self.valor71 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor71.insert(0, 0)
+        self.valor71.grid(row=36, column=2, padx=100)
+
+        self.valor72 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor72.insert(0, 0)
+        self.valor72.grid(row=37, column=2, padx=100)
+
+        self.valor73 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor73.insert(0, 0)
+        self.valor73.grid(row=38, column=2, padx=100)
+
+        self.valor74 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor74.insert(0, 0)
+        self.valor74.grid(row=39, column=2, padx=100)
+
+        self.valor75 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor75.insert(0,  0)
+        self.valor75.grid(row=40, column=2, padx=100)
+
+        self.valor76 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor76.insert(0, 0)
+        self.valor76.grid(row=41, column=2, padx=100)
+
+        self.valor77 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor77.insert(0, 0)
+        self.valor77.grid(row=42, column=2, padx=100)
+
+        self.valor78 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor78.insert(0, 0)
+        self.valor78.grid(row=43, column=2, padx=100)
+
+        self.valor87 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor87.insert(0, 0)
+        self.valor87.grid(row=45, column=2, padx=100)
+
+        self.valor88 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor88.insert(0, 0)
+        self.valor88.grid(row=46, column=2, padx=100)
+
+        self.valor89 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor89.insert(0, 0)
+        self.valor89.grid(row=47, column=2, padx=100)
+
+        self.valor90 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor90.insert(0,  0)
+        self.valor90.grid(row=48, column=2, padx=100)
+
+        self.valor91 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor91.insert(0, 0)
+        self.valor91.grid(row=49, column=2, padx=100)
+
+        self.valor92 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor92.insert(0, 0)
+        self.valor92.grid(row=50, column=2, padx=100)
+
+        self.valor94 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor94.insert(0, 0)
+        self.valor94.grid(row=52, column=2, padx=100)
+
+        self.valor95 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor95.insert(0, 0)
+        self.valor95.grid(row=53, column=2, padx=100)
+
+        self.valor96 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor96.insert(0, 0)
+        self.valor96.grid(row=54, column=2, padx=100)
+
+        self.valor97 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor97.insert(0, 0)
+        self.valor97.grid(row=55, column=2, padx=100)
+
+        self.valor98 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor98.insert(0, 0)
+        self.valor98.grid(row=56, column=2, padx=100)
+
+        self.valor99 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor99.insert(0, 0)
+        self.valor99.grid(row=57, column=2, padx=100)
+
+        self.valor100 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor100.insert(0, 0)
+        self.valor100.grid(row=58, column=2, padx=100)
+
+        self.valor101 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor101.insert(0, 0)
+        self.valor101.grid(row=59, column=2, padx=100)
+
+        self.valor102 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor102.insert(0, 0)
+        self.valor102.grid(row=60, column=2, padx=100)
+
+        self.valor103 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor103.insert(0, 0)
+        self.valor103.grid(row=61, column=2, padx=100)
+
+        self.valor104 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor104.insert(0, 0)
+        self.valor104.grid(row=62, column=2, padx=100)
+
+        self.valor107 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor107.insert(0, 0)
+        self.valor107.grid(row=64, column=2, padx=100)
+
+        self.valor108 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor108.insert(0, 0)
+        self.valor108.grid(row=65, column=2, padx=100)
+
+        self.valor109 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor109.insert(0, 0)
+        self.valor109.grid(row=66, column=2, padx=100)
+
+        self.valor110 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor110.insert(0, 0)
+        self.valor110.grid(row=67, column=2, padx=100)
+
+        self.valor111 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor111.insert(0, 0)
+        self.valor111.grid(row=68, column=2, padx=100)
+
+        self.valor112 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor112.insert(0, 0)
+        self.valor112.grid(row=69, column=2, padx=100)
+
+        self.valor113 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor113.insert(0, 0)
+        self.valor113.grid(row=70, column=2, padx=100)
+
+        self.valor114 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor114.insert(0, 0)
+        self.valor114.grid(row=71, column=2, padx=100)
+
+        self.valor115 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor115.insert(0, 0)
+        self.valor115.grid(row=72, column=2, padx=100)
+
+        self.valor117 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor117.insert(0, 0)
+        self.valor117.grid(row=75, column=2, padx=100)
+
+        self.valor118 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor118.insert(0, 0)
+        self.valor118.grid(row=76, column=2, padx=100)
+
+        self.valor119 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor119.insert(0, 0)
+        self.valor119.grid(row=77, column=2, padx=100)
+
+        self.valor120 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor120.insert(0, 0)
+        self.valor120.grid(row=78, column=2, padx=100)
+
+        self.valor121 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor121.insert(0, 0)
+        self.valor121.grid(row=79, column=2, padx=100)
+
+        self.valor122 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor122.insert(0, 0)
+        self.valor122.grid(row=80, column=2, padx=100)
+
+        self.valor123 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor123.insert(0, 0)
+        self.valor123.grid(row=81, column=2, padx=100)
+
+        self.valor124 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor124.insert(0, 0)
+        self.valor124.grid(row=82, column=2, padx=100)
+
+        self.valor125 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor125.insert(0, 0)
+        self.valor125.grid(row=83, column=2, padx=100)
+
+        self.valor126 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor126.insert(0, 0)
+        self.valor126.grid(row=84, column=2, padx=100)
+
+        self.valor127 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor127.insert(0, 0)
+        self.valor127.grid(row=85, column=2, padx=100)
+
+        self.valor128 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor128.insert(0, 0)
+        self.valor128.grid(row=86, column=2, padx=100)
+
+        self.valor129 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor129.insert(0, 0)
+        self.valor129.grid(row=87, column=2, padx=100)
+
+        self.valor130 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor130.insert(0, 0)
+        self.valor130.grid(row=88, column=2, padx=100)
+
+        self.valor131 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor131.insert(0, 0)
+        self.valor131.grid(row=89, column=2, padx=100)
+
+        self.valor132 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor132.insert(0, 0)
+        self.valor132.grid(row=90, column=2, padx=100)
+
+        self.valor133 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor133.insert(0, 0)
+        self.valor133.grid(row=91, column=2, padx=100)
+
+        self.valor134 = tk.Entry(
+            self.second_frame, width=20, bg="#ff5fff", fg="#000000")
+        self.valor134.insert(0, 0)
+        self.valor134.grid(row=94, column=2, padx=100)
+
+        self.valor135 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor135.insert(0, 0)
+        self.valor135.grid(row=95, column=2, padx=100)
+
+        self.valor136 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor136.insert(0, 0)
+        self.valor136.grid(row=96, column=2, padx=100)
+
+        self.valor137 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor137.insert(0, 0)
+        self.valor137.grid(row=97, column=2, padx=100)
+
+        self.valor138 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor138.insert(0, 0)
+        self.valor138.grid(row=98, column=2, padx=100)
+
+        self.valor139 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor139.insert(0, 0)
+        self.valor139.grid(row=99, column=2, padx=100)
+
+        self.valor140 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor140.insert(0, 0)
+        self.valor140.grid(row=100, column=2, padx=100)
+
+        self.valor141 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor141.insert(0, 0)
+        self.valor141.grid(row=101, column=2, padx=100)
+
+        self.valor142 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor142.insert(0, 0)
+        self.valor142.grid(row=102, column=2, padx=100)
+
+        self.valor143 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor143.insert(0, 0)
+        self.valor143.grid(row=103, column=2, padx=100)
+
+        self.valor144 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor144.insert(0, 0)
+        self.valor144.grid(row=104, column=2, padx=100)
+
+        self.valor145 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor145.insert(0, 0)
+        self.valor145.grid(row=105, column=2, padx=100)
+
+        self.valor146 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor146.insert(0, 0)
+        self.valor146.grid(row=106, column=2, padx=100)
+
+        self.valor147 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor147.insert(0, 0)
+        self.valor147.grid(row=107, column=2, padx=100)
+
+        self.valor148 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor148.insert(0, 0)
+        self.valor148.grid(row=108, column=2, padx=100)
+
+        self.valor149 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor149.insert(0, 0)
+        self.valor149.grid(row=109, column=2, padx=100)
+
+        self.valor150 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor150.insert(0, 0)
+        self.valor150.grid(row=110, column=2, padx=100)
+
+        self.valor169 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor169.insert(0, 0)
+        self.valor169.grid(row=112, column=2, padx=100)
+
+        self.valor170 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor170.insert(0, 0)
+        self.valor170.grid(row=113, column=2, padx=100)
+
+        self.valor171 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor171.insert(0, 0)
+        self.valor171.grid(row=114, column=2, padx=100)
+
+        self.valor172 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor172.insert(0, 0)
+        self.valor172.grid(row=115, column=2, padx=100)
+
+        self.valor173 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor173.insert(0, 0)
+        self.valor173.grid(row=116, column=2, padx=100)
+
+        self.valor174 = tk.Entry(
+            self.second_frame, width=20, bg="#ffffff", fg="#000000")
+        self.valor174.insert(0, 0)
+        self.valor174.grid(row=117, column=2, padx=100)
+
+    def labels_entry_proceso(self):
         print("VAKUES")
         print(self.value)
         print()
@@ -552,6 +1095,132 @@ class RecetasMenu:
         self.valor174.insert(0, ren[104])
         self.valor174.grid(row=117, column=2, padx=100)
 
+    def cancel(self):
+        pass
+
+    def save(self):
+        print("Guardando")
+        lista_valores = []
+        lista_valores.append(["v_evacuation_pressure",self.valor16.get()]) 
+        lista_valores.append(["v_anticavitation_pressure",self.valor17.get()])
+        lista_valores.append(["v_gas_interlock_pressure",  self.valor18.get()])
+        lista_valores.append(["v_pressure_increment", self.valor19.get()])
+        lista_valores.append(["v_time_increment", self.valor20.get()])
+        lista_valores.append(["v_fast_increment_tolerance", self.valor21.get()])
+        lista_valores.append(["v_slow_increment_termination_pressure", self.valor22.get()])
+        lista_valores.append(["v_print_interval", self.valor23.get()])
+        lista_valores.append(["l_leak_test_time", self.valor25.get()])
+        lista_valores.append(["l_leak_test_tolerance",self.valor26.get()])
+        lista_valores.append(["l_print_interval",self.valor27.get()])
+        lista_valores.append(["i_of_dilution_cycles",self.valor29.get()])
+        lista_valores.append(["i_inert_gas_pressure",self.valor30.get()])
+        lista_valores.append(["i_inert_pressure_increment",self.valor31.get()])
+        lista_valores.append(["i_inert_time_increment",self.valor32.get()])
+        lista_valores.append(["i_inert_fast_increment_tolerance",self.valor33.get()])
+        lista_valores.append(["i_evacuation_pressure",self.valor34.get()])
+        lista_valores.append(["i_vacuum_pressure_increment",self.valor35.get()])
+        lista_valores.append(["i_vacuum_time_increment",self.valor36.get()])
+        lista_valores.append(["i_vaccum_fast_inc_tolerance",self.valor37.get()])
+        lista_valores.append(["i_vacuum_slow_increment_termination_pressure",self.valor38.get()])
+        lista_valores.append(["i_anticavitation_pressure",self.valor39.get()])
+        lista_valores.append(["i_hi_pressure",self.valor40.get()])
+        lista_valores.append(["i_print_interval",self.valor41.get()])
+        lista_valores.append(["h_type",self.valor47.get()])
+        lista_valores.append(["h_pressure_rise",self.valor48.get()])
+        lista_valores.append(["h_pressure_increment",self.valor49.get()])
+        lista_valores.append(["h_time_increment",self.valor50.get()])
+        lista_valores.append(["h_fast_increment_tolerance",self.valor51.get()])
+        lista_valores.append(["h_maximum_time",self.valor52.get()])
+        lista_valores.append(["h_print_interval",self.valor53.get()])
+        lista_valores.append(["hd_type",self.valor71.get()])
+        lista_valores.append(["hd_control_pressure",self.valor72.get()])
+        lista_valores.append(["hd_control_diferential",self.valor73.get()])
+        lista_valores.append(["hd_hi_humidity",self.valor74.get()])
+        lista_valores.append(["hd_lo_humidity",self.valor75.get()])
+        lista_valores.append(["hd_maximum_humidity",self.valor76.get()])
+        lista_valores.append(["hd_dwell_time",self.valor77.get()])
+        lista_valores.append(["hd_print_interval",self.valor78.get()])
+        lista_valores.append(["g_gas_pressure",self.valor87.get()])
+        lista_valores.append(["g_pressure_increment",self.valor88.get()])
+        lista_valores.append(["g_time_increment",self.valor89.get()])
+        lista_valores.append(["g_fast_increment_tolerance",self.valor90.get()])
+        lista_valores.append(["g_print_interval",self.valor91.get()])
+        lista_valores.append(["g_gas_by_weight",self.valor92.get()])
+        lista_valores.append(["gd_control_pressure",self.valor94.get()])
+        lista_valores.append(["gd_control_differential",self.valor95.get()])
+        lista_valores.append(["gd_dwell_time",self.valor96.get()])
+        lista_valores.append(["gd_maximum_makeups",self.valor97.get()])
+        lista_valores.append(["gd_long_exposure",self.valor98.get()])
+        lista_valores.append(["gd_short_exposure",self.valor99.get()])
+        lista_valores.append(["gd_hi_pressure",self.valor100.get()])
+        lista_valores.append(["gd_lo_pressure",self.valor101.get()])
+        lista_valores.append(["gd_hi_pressure_abort",self.valor102.get()])
+        lista_valores.append(["gd_emission_control_lead_time",self.valor103.get()])
+        lista_valores.append(["gd_print_interval",self.valor104.get()])
+        lista_valores.append(["a_evacuation_pressure",self.valor107.get()])
+        lista_valores.append(["a_anticavitation_pressure",self.valor108.get()])
+        lista_valores.append(["a_air_interlock_pressure",self.valor109.get()])
+        lista_valores.append(["a_pressure_increment",self.valor110.get()])
+        lista_valores.append(["a_time_increment",self.valor111.get()])
+        lista_valores.append(["a_fast_increment_tolerance",self.valor112.get()])
+        lista_valores.append(["a_slow_increment_termination_pressure",self.valor113.get()])
+        lista_valores.append(["a_vacuum_hold_time",self.valor114.get()])
+        lista_valores.append(["a_print_interval",self.valor115.get()])
+        lista_valores.append(["gwa_of_wash_cycles",self.valor117.get()])
+        lista_valores.append(["gwa_release_type",self.valor118.get()])
+        lista_valores.append(["gwa_release_pressure",self.valor119.get()])
+        lista_valores.append(["gwa_evacuation_pressure",self.valor120.get()])
+        lista_valores.append(["gwa_anticavitation_pressure",self.valor121.get()])
+        lista_valores.append(["gwa_hi_pressure",self.valor122.get()])
+        lista_valores.append(["gwa_release_pressure_increment",self.valor123.get()])
+        lista_valores.append(["gwa_release_time_increment",self.valor124.get()])
+        lista_valores.append(["gwa_fast_inc_tolerance",self.valor125.get()])
+        lista_valores.append(["gwa_release_slow_increment_termination_pressure",self.valor126.get()])
+        lista_valores.append(["gwa_release_hold_time",self.valor127.get()])
+        lista_valores.append(["gwa_vacuum_pressure_increment",self.valor128.get()])
+        lista_valores.append(["gwa_vacuum_time_increment",self.valor129.get()])
+        lista_valores.append(["gwa_vacuum_fast_inc_tolerance",self.valor130.get()])
+        lista_valores.append(["gwa_vacuum_slow_increment_termination_pressure",self.valor131.get()])
+        lista_valores.append(["gwa_vacuum_hold_time",self.valor132.get()])
+        lista_valores.append(["gwa_print_interval",self.valor133.get()])
+        lista_valores.append(["gwb_of_wash_cycles",self.valor134.get()])
+        lista_valores.append(["gwb_release_type",self.valor135.get()])
+        lista_valores.append(["gwb_release_pressure",self.valor136.get()])
+        lista_valores.append(["gwb_evacuation_pressure",self.valor137.get()])
+        lista_valores.append(["gwb_anticavitation_pressure",self.valor138.get()])
+        lista_valores.append(["gwb_hi_pressure",self.valor139.get()])
+        lista_valores.append(["gwb_release_pressure_increment",self.valor140.get()])
+        lista_valores.append(["gwb_release_time_increment",self.valor141.get()])
+        lista_valores.append(["gwb_release_fast_inc_tolerance",self.valor142.get()])
+        lista_valores.append(["gwb_release_slow_increment_termination_pressure",self.valor143.get()])
+        lista_valores.append(["gwb_release_hold_time",self.valor144.get()])
+        lista_valores.append(["gwb_vacuum_pressure_increment",self.valor145.get()])
+        lista_valores.append(["gwb_vacuum_time_increment",self.valor146.get()])
+        lista_valores.append(["gwb_vacuum_fast_inc_tolerance",self.valor147.get()])
+        lista_valores.append(["gwb_slow_increment_termination_pressure",self.valor148.get()])
+        lista_valores.append(["gwb_vacuum_hold_time",self.valor149.get()])
+        lista_valores.append(["gwb_print_interval",self.valor150.get()])
+        lista_valores.append(["r_release_pressure",self.valor169.get()])
+        lista_valores.append(["r_pressure_increment",self.valor170.get()])
+        lista_valores.append(["r_time_increment",self.valor171.get()])
+        lista_valores.append(["r_fast_increment_tolerance",self.valor172.get()])
+        lista_valores.append(["r_slow_increment_termination_pressure",self.valor173.get()])
+        lista_valores.append(["r_print_interval",self.valor174.get()])
+        
+
+        print(lista_valores)
+        print(lista_valores[0])
+
+    def create(self):
+        self.enable_edit()
+        print("create")
+        valor= askstring(title="VALOR",prompt="Ingrese un numero")
+        #activar botones guardar y cancelar
+        self.boton_guardar.config(state="normal")
+        self.boton_cancelar.config(state="normal")
+        self.labels_entry()
+        print(valor)
+
     def disable_edit(self):
         # entry = ttk.Entry(state=tk.DISABLED)
         self.valor16.config(state="readonly")
@@ -795,18 +1464,24 @@ class RecetasMenu:
         self.date.config(text=time.strftime("%d/%m/%Y"))
         self.clock.after(200, self.times)
 
-    def __init__(self):
-        root = Tk()
-        root.title("Pre Calentamiento")
-        root.geometry("1200x800")
+    def __init__(self,parent,controller):
+        #self.root = Tk()
+        #self.root.title("Pre Calentamiento")
+        #self.root.geometry("1200x800")
+        tk.Frame.__init__(self, parent)
+        self.root = controller
         self.con = DBProceso()
         self.value = "Receta01"
 
         # header
         # ------------------------------------------------------
         frame_form_top = tk.Frame(
-            root, height=50, bd=0, padx=10, relief=tk.SOLID, bg="#ffffff")
+            self.root, height=50, bd=0, padx=10, relief=tk.SOLID, bg="#ffffff")
         frame_form_top.pack(side="top", fill=tk.X)
+
+        button_regreso = tk.Button(frame_form_top, text="Regresar", bg="#ffffdf", fg="#000000",command=lambda: controller.show_frame("StartPage"))
+        button_regreso.pack(side=tk.LEFT, padx=10, pady=10)
+
         title = tk.Label(frame_form_top, text="Sterilization System", font=(
             'Times', 30), bg="#ffffff", fg="#000000", pady=0)
         title.pack(side="left")
@@ -832,11 +1507,11 @@ class RecetasMenu:
         # ----------------------------------------------------------------------------------------------------------------------
 
         # FRAME PARA LISTA Y BOTONES DE RECETAS
-        frame_left = tk.Frame(root, bd=0, relief=tk.SOLID,
+        frame_left = tk.Frame(self.root, bd=0, relief=tk.SOLID,
                               width=40, padx=10, pady=10, bg="#ffffff")
         frame_left.pack(side="left", expand=tk.NO, fill=tk.BOTH)
         lista = tk.Listbox(frame_left, height=10, bd=0, relief=tk.SOLID,
-                           bg="#fcfcfc", fg="#666a88", font=('Times', 15, BOLD))
+                           bg="#fcfcfc", fg="#000000", font=('Times', 15, BOLD))
         lista.pack(side="top", expand=tk.NO, fill=tk.X)
         lista.bind('<<ListboxSelect>>', self.getElement)
 
@@ -848,27 +1523,29 @@ class RecetasMenu:
             lista.insert(0, names[i])
 
         boton_crear = tk.Button(frame_left, text="Crear", font=(
-            'Times', 15, BOLD), bg="green", bd=0, fg="#fff")
+            'Times', 15, BOLD), bg="green", bd=0, fg="#fff", command=self.create)
         boton_crear.pack(side="top", expand=tk.NO, fill=tk.X, pady=5)
 
         boton_editar = tk.Button(frame_left, text="Editar", font=(
             'Times', 15, BOLD), bg="yellow", bd=0, fg="#fff", command=self.enable_edit)
         boton_editar.pack(side="top", expand=tk.NO, fill=tk.X, pady=5)
 
+
+
         boton_eliminar = tk.Button(frame_left, text="Eliminar", font=(
             'Times', 15, BOLD), bg="red", bd=0, fg="#fff")
         boton_eliminar.pack(side="top", expand=tk.NO, fill=tk.X, pady=10)
 
-        boton_eliminar = tk.Button(frame_left, text="Guardar", font=(
-            'Times', 15, BOLD), bg="blue", bd=0, fg="#fff", state=tk.DISABLED)
-        boton_eliminar.pack(side="bottom", expand=tk.NO, fill=tk.X, pady=5)
+        self.boton_guardar = tk.Button(frame_left, text="Guardar", font=(
+            'Times', 15, BOLD), bg="blue", bd=0, fg="#fff", state=tk.DISABLED, command=self.save)
+        self.boton_guardar.pack(side="bottom", expand=tk.NO, fill=tk.X, pady=5)
 
-        boton_eliminar = tk.Button(frame_left, text="Cancelar", font=(
-            'Times', 15, BOLD), bg="orange", bd=0, fg="#fff", state=tk.DISABLED)
-        boton_eliminar.pack(side="bottom", expand=tk.NO, fill=tk.X, pady=5, )
+        self.boton_cancelar = tk.Button(frame_left, text="Cancelar", font=(
+            'Times', 15, BOLD), bg="orange", bd=0, fg="#fff", state=tk.DISABLED, command=self.cancel)
+        self.boton_cancelar.pack(side="bottom", expand=tk.NO, fill=tk.X, pady=5,  )
 
         # main frame
-        main_frame = Frame(root, bg="#ffffff")
+        main_frame = Frame(self.root, bg="#ffffff")
         main_frame.pack(fill=BOTH, expand=True, padx=10, pady=10)
         # canvas
         canvas = Canvas(main_frame, bg="#ffffff")
@@ -1014,4 +1691,4 @@ class RecetasMenu:
 
         self.disable_edit()
 
-        root.mainloop()
+        self.root.mainloop()
